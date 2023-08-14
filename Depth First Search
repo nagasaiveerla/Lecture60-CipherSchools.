@@ -1,0 +1,106 @@
+import java.util.LinkedList;
+class Graph {
+    int v;
+    LinkedList<Integer> arr[];
+
+    Graph(int v) {
+        this.v = v;
+        arr = new LinkedList[v];//only creatd an array to store a linked list
+        for (int i = 0; i < v; i++)
+            arr[i] = new LinkedList<>();//initializing empty ll's at each array index
+    }
+
+
+    void addEdge(int start, int end)//(u,v)
+    {
+        arr[start].add(end);
+        //arr[end].add(start);//bidirectional graph
+    }
+    void print(){
+        for(int i=0;i<v;i++){
+            //print the neighbours for v
+            System.out.println("neighbours of "+i+"are");
+            for(integer x:arr[i]])//one by one neighbours come in x
+            {
+                System.out.println(x + " ");
+            }
+            System.out.println();
+        }
+
+    }
+    void BFS(int s){
+        System.out.println("-----BFS------");
+        Queue<Integer> q = new LinkedList<> ();
+        boolean visited[] = new boolean[v];
+        q.add(5);
+        visited[s].isEmpty(){
+            int temp = q.poll();
+            System.out.println(temp+" ");
+            //neighbours of temp are at arr[temp]
+        for(Integers x:arr[temp])
+        {
+            if(!visited[x])
+            {
+                q.add(x);
+                visited[x] = true;
+            }
+        }
+        }
+    }
+
+    void DFS(int s){
+        System.out.println("-----DFS------");
+        boolean visited[]= new boolean[v];
+        DFSUtil(s,visited);//utility /helper function to pass the same array to the recursive calls.
+        System.out.println();}
+    void DFSUtil(int s , boolean visited[])
+    {
+
+        System.out.println(s+" ");
+        visited[s] = true;
+        for(Integer x arr[s])//if neighbour not visited
+        {
+            if(!visited[x])//if neighbour not visited
+            {
+                DFS(X.visited);//DO DFS on the x
+            }
+        }
+        void DFSOverall(){
+        System.out.println("----DFS OVERALL");
+        boolean visited[] = new boolean[v];'
+    int  count =0;
+        for(int i=0;i<v;i++){
+            if(!visited[i])
+            {
+                DFSUtil(i,visited);
+                System.out.println();
+                count++;//whenever a new component found
+            }
+        }
+    }
+    }
+}
+public class GraphLL{-
+    public static void main(String args[]){
+
+    Graph g = new Graph(5);
+    g.addEdge(0,1);
+    g.addEdge(0,2);
+    g.addEdge(0,3);
+    g.addEdge(1,3);
+    g.addEdge(2,4);
+    g.addEdge(3,4);
+   g.BFS(0);
+   g.BFS(1);
+   g.BFS(2);
+   g.BFS(3);
+   g.BFS(4);
+
+   g.DFS(0);
+   g.DFS(1);
+   
+   
+   
+   g.DFSOverall();
+    }
+}
